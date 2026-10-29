@@ -1,13 +1,18 @@
 const express = require('express');
 const cors = require('cors');
-const app = express();
 const logger = require('./logger');
 
+const countryRouter = require('./routers/countries');
+
+const app = express();
 app.use(cors())
-app.use(logger())
+app.use(logger)
+
+app.use('/countries', countryRouter)
+
+
+
+// express.use(startingPath, middleware);
+// express.METHOD(exactPath, middleware);
 
 module.exports = app;
-
-
-express.use(startingPath, middleware);
-express.METHOD(exactPath, middleware);
