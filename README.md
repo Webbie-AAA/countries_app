@@ -32,3 +32,36 @@ A country API tha† allows you to add, remove, and view countries.
         - __nodemon__
 
         - __pg__
+
+4. Setup your database
+
+    - Create a database on [Supabase](https://supabase.com/) or other cloud-based database management systems platform
+
+    - Retrieve the database URL and copy it
+
+    - Create a `.env` file in the root directory with the following:
+        - `DB_URL=<your_database_url>`
+
+    - Replace `<your_database_url>` with the database URL you just copied from Supabase
+
+    - Run `npm run setup-db` to setup the database
+
+
+## Database Schema
+
+This database was created with __Postgres__
+
+`country` - table name
+
+```sql
+country_id INT GENERATED ALWAYS AS IDENTITY,
+name VARCHAR(100) NOT NULL,
+capital VARCHAR(100) NOT NULL,
+population INT NOT NULL,
+languages VARCHAR(100) NOT NULL,
+fun_fact VARCHAR(255),
+map_image_url VARCHAR(255),
+PRIMARY KEY (country_id)
+```
+
+
