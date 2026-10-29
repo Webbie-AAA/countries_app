@@ -26,4 +26,31 @@ async function showACountry(req, res){
     }
 }
 
-module.exports = { index, showACountry }
+async function createACountry(req, res){
+    try {
+        let data = req.params.body
+        const newCountry = await Country.create(data)
+        res.status(201).json(newCountry)
+    } catch  (err) {
+        res.status(400).json({err: err.message})
+    }
+}
+
+async function updateACountry(req, res){
+
+}
+
+async function deleteACountry(req, res) {
+    try {
+        let name = req.params.name
+        const country = await Country.getOneByCountryName(name)
+        const result = await Country.destroy(country)
+        res.status(204).end()
+    } catch (err){
+        res.status(404).json({error: err.message})
+
+    }
+    
+}
+
+module.exports = { index, showACountry, createACountry, deleteACountry }

@@ -6,7 +6,9 @@ const countryRouter = require('./routers/countries');
 
 const app = express();
 app.use(cors())
+//custom middleware
 app.use(logger)
+app.use(express.json())
 
 app.use('/countries', countryRouter)
 

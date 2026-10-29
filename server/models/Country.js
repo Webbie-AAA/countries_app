@@ -22,13 +22,37 @@ class Country {
     }
 
     static async getOneByCountryName(countryName){
-        const response = await db.query('SElECT * FROM country WHERE LOWER(name) = $1;',
+        const response = await db.query('SElECT * FROM country WHERE LOWER(name) = LOWER($1);',
             [countryName]
         )
 
         if (response.rows.length != 1){
             throw new Error('Unable to locate country')
         }
+
+        return new Country(response.rows[0])
+    }
+
+    static async create(data){
+        //to say it must not be Null you add it into the curly brackets.
+        const { name, capital, population, languages} = data;
+        const existingCountry = await db.query('SELECT name FROM country WHERE(name) = LOWER($1)',
+            [name]
+        )
+
+        if (existingCountry.rows.length === 0){
+            let response = await db.query('INSERT INTO country (name, capital, population, languages) VALUES ($1, $2, $3, $4) RETURNING *;',
+                [name, capital, population, languages]
+            )
+
+            return new Country(response.rows[0])
+        } else new Error('A country with this name already exists')
+    }
+
+    async destroy(){
+        let response = await db.query('DELETE FROM country WHERE name = $1 RETURNING *;',
+            [this.name]
+        )
 
         return new Country(response.rows[0])
     }

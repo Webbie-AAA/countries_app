@@ -79,4 +79,54 @@ map_image_url VARCHAR(255),
 PRIMARY KEY (country_id)
 ```
 
+### Base URL
+`https://localhost:<port>/countries` (or your deployed URL)
+
+### API Endpoints
+
+| Method | Endpoint                  | Description                  |
+|--------|---------------------------|------------------------------|
+| GET    | /countries                | Retrieves all countries      |
+| GET    | /countries/:name          | Retrieves a single country   |
+| POST   | /countries                | Creates a new country        |
+| DELETE | /countries/:name          |  Deletes a country           |
+
+## Get all countries
+
+### Example Request 
+
+To retrieve all countries, you can use the `GET` quest:
+
+`GET/countries`
+
+`curl -X GET http://localhost:<port>/countries`
+
+### Example Response
+
+A successful response will return a JSON array of countries objects, similar to the following:
+
+```   
+    [
+        {
+          "id": 1,
+          "name": "country1",
+          "capital": "capital1",
+          "population": 1,
+          "languages": "language1",
+          "fun_fact": "fact1",
+          "map_image_url": "url1"
+        },
+        {
+          "id": 2,
+          "name": "country2",
+          "capital": "capital2",
+          "population": 2,
+          "languages": "language2",
+          "fun_fact": "fact2",
+          "map_image_url": "url2"
+        },
+    ]
+```
+
+
 
