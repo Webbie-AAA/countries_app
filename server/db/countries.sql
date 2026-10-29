@@ -6,10 +6,11 @@ CREATE TABLE country (
     capital VARCHAR(100) NOT NULL,
     population INT NOT NULL,
     languages VARCHAR(100) NOT NULL,
+    fun_fact VARCHAR(255) NOT NULL,
     map_image_url VARCHAR(225),
     PRIMARY KEY (country_id)
 
-)
+);
 
 INSERT INTO country (name, capital, population, languages, fun_fact, map_image_url)
 VALUES 
