@@ -12,6 +12,18 @@ CREATE TABLE country (
 
 );
 
+
+DROP TABLE IF EXISTS country_cuisines;
+
+CREATE TABLE country_cuisines (
+    id INTEGER GENERATED ALWAYS AS IDENTITY,
+    country_id INTEGER NOT NULL,
+    country_name VARCHAR(100) NOT NULL,
+    most_popular_dish VARCHAR (200),
+    PRIMARY KEY (id),
+    FOREIGN KEY (country_id) REFERENCES country(country_id)
+);
+
 INSERT INTO country (name, capital, population, languages, fun_fact, map_image_url)
 VALUES 
     ('Brazil', 'Brasília', 212559417, 'Portuguese', 'Brazil is the fifth largest country in the world by both land area and population.', 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Flag_of_Brazil.svg/1200px-Flag_of_Brazil.svg.png'),
@@ -23,4 +35,17 @@ VALUES
     ('Japan', 'Tokyo', 126860301, 'Japanese', 'Japan is home to the world''s largest fish market, Tsukiji Market.', 'https://upload.wikimedia.org/wikipedia/en/thumb/9/9e/Flag_of_Japan.svg/1200px-Flag_of_Japan.svg.png'),
     ('South Africa', 'Pretoria', 57779622, 'Afrikaans, English, Zulu, Xhosa, and others', 'South Africa has 11 official languages.', 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Flag_of_South_Africa.svg/1200px-Flag_of_South_Africa.svg.png'),
     ('Australia', 'Canberra', 24982688, 'English', 'Australia is the only country that is also a continent.', 'https://upload.wikimedia.org/wikipedia/en/thumb/8/88/Flag_of_Australia.svg/1200px-Flag_of_Australia.svg.png');
+
+INSERT INTO country_cuisines (country_id, country_name, most_popular_dish)
+VALUES 
+    (1,'Brazil', 'Feijoada'),
+    (2,'Mexico', 'Tacos al Pastor'),
+    (3,'United States', 'Hamburger'),
+    (4,'India', 'Biryani'),
+    (5,'China', 'Peking Duck'),
+    (6,'Russia', 'Borscht'),
+    (7,'Japan', 'Sushi'),
+    (8,'South Africa', 'Bobotie'),
+    (9, 'Australia', 'Meat Pie');
+
 

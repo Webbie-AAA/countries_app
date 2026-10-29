@@ -90,16 +90,48 @@ PRIMARY KEY (country_id)
 | GET    | /countries/:name          | Retrieves a single country   |
 | POST   | /countries                | Creates a new country        |
 | DELETE | /countries/:name          |  Deletes a country           |
+| UPDATE | /countries/:name          |  Update a country           |
 
 ## Get all countries
 
 ### Example Request 
 
-To retrieve all countries, you can use the `GET` quest:
+__To retrieve all countries__, you can use the `GET` quest:
 
 `GET/countries`
 
 `curl -X GET http://localhost:<port>/countries`
+
+__To retrieve a single country__, you can use the `GET` quest:
+
+`GET/countries/<name_of_country>`
+
+__To add a country__, you can use the `POST` quest and add a JSON object as a body specifying key-value pairs:
+
+`POST/countries/`
+    ```
+    {
+        "name": <name>,
+        "capital": <capital>,
+        "population": <population>,
+        "languages": <languages>,
+        "fun_fact": <fun_fact>,
+        "map_image_url": <map_image_url>
+    }
+    ```
+
+__To delete a country__, you can use the `DELETE`:
+
+`DELETE/countries/<name_of_country>`
+
+__To update a country__, you can use the `PATCH`:
+
+`PATCH/countries/<name_of_country>`
+
+
+
+
+
 
 ### Example Response
 
