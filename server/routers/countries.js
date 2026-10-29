@@ -7,5 +7,6 @@ countryRouter.get('/', countryController.index)
 countryRouter.get('/:name', countryController.showACountry)
 countryRouter.post('/', countryController.createACountry)
 countryRouter.delete('/:name', countryController.deleteACountry)
+countryRouter.patch('/:name', countryController.updateACountry)
 
 module.exports = countryRouter

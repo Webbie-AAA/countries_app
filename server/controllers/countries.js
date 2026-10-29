@@ -28,7 +28,7 @@ async function showACountry(req, res){
 
 async function createACountry(req, res){
     try {
-        let data = req.params.body
+        let data = req.body
         const newCountry = await Country.create(data)
         res.status(201).json(newCountry)
     } catch  (err) {
@@ -36,9 +36,6 @@ async function createACountry(req, res){
     }
 }
 
-async function updateACountry(req, res){
-
-}
 
 async function deleteACountry(req, res) {
     try {
@@ -53,4 +50,18 @@ async function deleteACountry(req, res) {
     
 }
 
-module.exports = { index, showACountry, createACountry, deleteACountry }
+async function updateACountry(req, res) {
+        const name = req.params.name.toLowerCase()
+    try{
+        const country = await Country.getOneByCountryName(name)
+        console.log(country)
+        const result = await country.update(req.body)
+        console.log(result)
+        res.status(200).send(result)
+    } catch(err){
+        res.status(404).json({error: err.message})
+    }
+    
+}
+
+module.exports = { index, showACountry, createACountry, deleteACountry, updateACountry }

@@ -3,7 +3,6 @@ const cors = require('cors');
 const logger = require('./logger');
 
 const countryRouter = require('./routers/countries');
-
 const app = express();
 app.use(cors())
 //custom middleware
