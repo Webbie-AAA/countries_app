@@ -14,4 +14,16 @@ async function index(req, res) {
     
 }
 
-module.exports = { index }
+async function showACountry(req, res){
+    try {
+        let name = req.params.name 
+        const country = await Country.getOneByCountryName(name)
+        res.status(200).json(country)
+
+    } catch {
+        res.status(404).json({error: err.message})
+
+    }
+}
+
+module.exports = { index, showACountry }

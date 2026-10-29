@@ -20,6 +20,18 @@ class Country {
 
         return response.rows.map(c => new Country(c))
     }
+
+    static async getOneByCountryName(countryName){
+        const response = await db.query('SElECT * FROM country WHERE LOWER(name) = $1;',
+            [countryName]
+        )
+
+        if (response.rows.length != 1){
+            throw new Error('Unable to locate country')
+        }
+
+        return new Country(response.rows[0])
+    }
 }
 
 module.exports = Country;

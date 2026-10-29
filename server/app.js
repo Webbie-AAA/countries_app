@@ -10,9 +10,4 @@ app.use(logger)
 
 app.use('/countries', countryRouter)
 
-
-
-// express.use(startingPath, middleware);
-// express.METHOD(exactPath, middleware);
-
 module.exports = app;

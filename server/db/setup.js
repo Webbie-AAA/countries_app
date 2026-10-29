@@ -3,7 +3,7 @@ const fs = require('fs')
 
 const db = require('./connect');
 
-const sql = fs.readFileSync('./server/db/countries.sql').toString()
+const sql = fs.readFileSync('./server/db/countries.sql').toString() //so it always returns a string anyway? 
 
 db.query(sql)
     .then(data => {

@@ -4,5 +4,6 @@ const countryController = require('../controllers/countries')
 const countryRouter = Router();
 
 countryRouter.get('/', countryController.index)
+countryRouter.get('/:name', countryController.showACountry)
 
 module.exports = countryRouter
